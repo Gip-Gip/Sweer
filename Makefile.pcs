@@ -1,0 +1,47 @@
+all: clean makebdir
+	if [ -f $(tccbuildf) ]; then rm $(tccbuildf); fi
+
+	for file in $(cfiles); do \
+		echo $$file >> $(tccbuildf); \
+		echo $(cpp) $(cppargs) $(incb) $(defb) \
+			"$$file" $(outputarg) "$$file$(cppext)" | tee /dev/stderr | sh; \
+		if test $$? -ne "0"; then\
+			exit 1;\
+		fi;\
+	done
+
+	for file in $(cppfiles); do \
+		echo $(cc) $(ccargs) "$$file" $(outputarg) "$$file$(objext)" \
+			| tee /dev/stderr | sh; \
+		if test "$$?" -ne "0"; then\
+			exit 1;\
+		fi;\
+	done
+
+	for file in $(objfiles); do \
+		if test -f "$(mainobj)"; then \
+			echo $(intr_ld) $(intr_ldargs) "$$file" "$(mainobj)" $(outputarg) \
+				"$(mainobj).tmp.o" | tee /dev/stderr | sh; \
+		else \
+			cp "$$file" "$(mainobj).tmp.o"; \
+		fi; \
+		if test "$$?" -ne "0"; then \
+			exit 1; \
+		fi; \
+		mv "$(mainobj).tmp.o" "$(mainobj)"; \
+	done
+
+	$(ld) $(libb) $(ldargs) $(mainobj) $(outputarg) $(bin)
+
+clean:
+	if [ -f "$(mainobj)" ]; then rm $(mainobj); fi
+	if [ -f "$(bin)" ]; then rm $(bin); fi
+	for file in  $(cppfiles) $(objfiles); do\
+                 if [ -f $$file ]; then rm "$$file"; fi; done
+
+makebdir:
+	if [ ! -d lib ]; then mkdir lib; fi
+
+install: all
+	cp $(bin) $(prefix)$(libdir)
+	cp $(header) $(prefix)$(headerdir)
