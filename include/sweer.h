@@ -53,7 +53,7 @@ extern string ssln_numTable;
 extern ssln ssln_new(void);
 extern ssln ssln_set(ssln *, ssln);
 extern ssln ssln_adi(ssln *);
-extern ssln ssln_i2s(natural);
+extern ssln ssln_i2n(natural);
 extern void ssln_rid(ssln);
 extern bool ssln_cmp(ssln, ssln);
 extern bool ssln_gt(ssln, ssln);

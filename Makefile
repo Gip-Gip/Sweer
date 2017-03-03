@@ -35,7 +35,6 @@ cppfiles=`for dir in $(sourcedirs); do echo -n " $$dir/*$(cppext) "; done`
 objfiles=`for dir in $(sourcedirs); do echo -n " $$dir/*$(objext) "; done`
 
 all: clean makebdir
-	if [ -f $(tccbuildf) ]; then rm $(tccbuildf); fi
 
 	for file in $(cfiles); do \
 		echo $$file >> $(tccbuildf); \
@@ -72,6 +71,7 @@ all: clean makebdir
 clean:
 	if [ -f "$(mainobj)" ]; then rm $(mainobj); fi
 	if [ -f "$(bin)" ]; then rm $(bin); fi
+	if [ -f "$(tccbuildf)" ]; then rm $(tccbuildf); fi
 	for file in  $(cppfiles) $(objfiles); do\
                  if [ -f $$file ]; then rm "$$file"; fi; done
 

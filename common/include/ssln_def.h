@@ -18,7 +18,7 @@ MACROS:
 
 #define ONE 1
 #define ZERO 0
-#define SSLN_ZERO ssln_i2s(ZERO)
+#define SSLN_ZERO ssln_i2n(ZERO)
 
 #define INDEXINIT -1
 #define NUMALLOC 1

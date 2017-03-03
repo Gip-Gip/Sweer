@@ -25,7 +25,7 @@ ssln ssln_sub(ssln subtrahend, ssln minuend)
     if(ssln_cmp(workingSubtrahend, workingMinuend))
     {
         FREEALL();
-        return ssln_i2s(ZERO);
+        return ssln_i2n(ZERO);
     }
 
     if(workingSubtrahend.negative & (!workingMinuend.negative))

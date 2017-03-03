@@ -1,4 +1,4 @@
-/* ssln_i2s - converts integers to the ssln type
+/* ssln_i2n - converts integers to the ssln type
 
 ARGUMENTS:
 
@@ -8,9 +8,9 @@ VARIABLES:
 
 */
 
-#include <ssln_i2s.h>
+#include <ssln_i2n.h>
 
-ssln ssln_i2s(natural num)
+ssln ssln_i2n(natural num)
 {
     ssln ret = ssln_new();
     natural numn = 0;

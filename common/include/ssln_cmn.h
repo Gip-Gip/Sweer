@@ -22,7 +22,7 @@ extern string ssln_numTable[];
 extern ssln ssln_new(void);
 extern ssln ssln_set(ssln *, ssln);
 extern ssln ssln_adi(ssln *);
-extern ssln ssln_i2s(natural);
+extern ssln ssln_i2n(natural);
 extern string ssln_sap(string, string, bool, bool);
 extern void ssln_rid(ssln);
 extern bool ssln_cmp(ssln, ssln);

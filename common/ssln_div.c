@@ -19,7 +19,7 @@ ssln ssln_div(ssln dividend, ssln divisor)
 
     natural raise = dividend.integerSize;
 
-    ssln_set(&quotent, ssln_i2s(ZERO));
+    ssln_set(&quotent, ssln_i2n(ZERO));
     ssln_set(&workingDividend, dividend);
     ssln_set(&workingDivisor, divisor);
 
@@ -35,7 +35,7 @@ ssln ssln_div(ssln dividend, ssln divisor)
 
             ssln_set(
                 &quotent,
-                ssln_add(quotent, ssln_ras(ssln_i2s(ONE), raise)));
+                ssln_add(quotent, ssln_ras(ssln_i2n(ONE), raise)));
         }
 
         raise --;

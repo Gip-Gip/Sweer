@@ -27,11 +27,11 @@ string ssln_n2s(ssln num, natural base)
     {
         ret = ssln_sap(
             ret,
-            ssln_numTable[ssln_n2i(ssln_mod(workNum, ssln_i2s(base)))],
+            ssln_numTable[ssln_n2i(ssln_mod(workNum, ssln_i2n(base)))],
             true,
             false);
 
-        ssln_set(&workNum, ssln_div(workNum, ssln_i2s(base)));
+        ssln_set(&workNum, ssln_div(workNum, ssln_i2n(base)));
     }
 
     if(negative) ret = ssln_sap(ret, SSLN_NEG, true, false);

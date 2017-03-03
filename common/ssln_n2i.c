@@ -1,4 +1,4 @@
-/* ssln_n2i - "converts" SSLNs to integers
+/* ssln_n2i - converts SSLNs to integers
 
 ARGUMENTS:
 
@@ -10,7 +10,14 @@ VARIABLES:
 
 natural ssln_n2i(ssln src)
 {
-    natural retInt = src.integer[ZERO];
+    natural retInt = ZERO, numn = src.integerSize;
+
+    while(numn--)
+    {
+        retInt <<= BYTESHFT;
+        retInt = src.integer[numn];
+    }
+
     FREEALL();
     return retInt;
 }
