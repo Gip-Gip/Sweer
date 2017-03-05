@@ -24,8 +24,8 @@ typedef char character;
 typedef character * string;
 
 typedef enum {
-    none,
-    err_errno,
+    ssln_err_none,
+    ssln_err_errno,
 } ssln_error;
 
 typedef enum {
@@ -50,6 +50,7 @@ extern string ssln_numTable;
 
 /* FUNCTIONS */
 
+extern ssln ssln_eEr(natural);
 extern ssln ssln_new(void);
 extern ssln ssln_set(ssln *, ssln);
 extern ssln ssln_adi(ssln *);
