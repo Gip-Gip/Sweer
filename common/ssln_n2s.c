@@ -34,6 +34,9 @@ string ssln_n2s(ssln num, natural base)
         ssln_set(&workNum, ssln_div(workNum, ssln_i2n(base)));
     }
 
+    /* The string returned would be blank if the ssln was zero... */
+    if(!strlen(ret)) ret = ssln_sap(ret, ssln_numTable[ZERO], true, false);
+
     if(negative) ret = ssln_sap(ret, SSLN_NEG, true, false);
 
     ssln_rid(workNum);

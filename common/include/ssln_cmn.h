@@ -19,6 +19,7 @@ MACROS:
 #include <ssln_mac.h>
 
 extern string ssln_numTable[];
+extern ssln ssln_eEr();
 extern ssln ssln_new(void);
 extern ssln ssln_set(ssln *, ssln);
 extern ssln ssln_adi(ssln *);
